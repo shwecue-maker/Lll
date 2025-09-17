@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cute Budget Calculator</title>
+    <!-- Google Fonts for cute style -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #e0f7fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .calculator {
+            background-color: #ffffff;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            width: 350px;
+            text-align: center;
+        }
+        h1 {
+            color: #0288d1;
+            margin-bottom: 20px;
+        }
+        input[type="number"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border: 1px solid #0288d1;
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #0288d1;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0277bd;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #00796b;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h1>💖 Budget Calculator</h1>
+        <input type="number" id="income" placeholder="Enter your income">
+        <input type="number" id="expenses" placeholder="Enter your expenses">
+        <button onclick="calculateBudget()">Calculate</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function calculateBudget() {
+            const income = parseFloat(document.getElementById('income').value);
+            const expenses = parseFloat(document.getElementById('expenses').value);
+            if (isNaN(income) || isNaN(expenses)) {
+                document.getElementById('result').innerText = "Please enter valid numbers!";
+                return;
+            }
+            const balance = income - expenses;
+            document.getElementById('result').innerText = `Your remaining budget is $${balance.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>
